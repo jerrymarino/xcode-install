@@ -666,7 +666,7 @@ HELP
     end
 
     def verify_integrity
-      verify_app_security_assessment && verify_app_cert
+      (verify_app_security_assessment && verify_app_cert) unless ENV.key?('XCODE_INSTALL_CACHE_DIR')?
     end
 
     :private

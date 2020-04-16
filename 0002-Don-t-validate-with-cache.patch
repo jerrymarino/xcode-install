@@ -1,0 +1,25 @@
+From 408e9d1570d1752ec5d4fa64e1af6667ff8485f7 Mon Sep 17 00:00:00 2001
+From: Jerry <jerrymarino@pinterest.com>
+Date: Thu, 16 Apr 2020 13:13:29 -0700
+Subject: [PATCH 2/2] Don't validate with cache
+
+---
+ lib/xcode/install.rb | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/xcode/install.rb b/lib/xcode/install.rb
+index 49a064b..d8fc322 100644
+--- a/lib/xcode/install.rb
++++ b/lib/xcode/install.rb
+@@ -666,7 +666,7 @@ HELP
+     end
+ 
+     def verify_integrity
+-      verify_app_security_assessment && verify_app_cert
++      verify_app_security_assessment && verify_app_cert unless ENV.key?('XCODE_INSTALL_CACHE_DIR')
+     end
+ 
+     :private
+-- 
+2.24.1 (Apple Git-126)
+
